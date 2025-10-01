@@ -6,13 +6,8 @@ import com.wecp.financial_seminar_and_workshop_management.dto.LoginResponse;
 import com.wecp.financial_seminar_and_workshop_management.entity.User;
 import com.wecp.financial_seminar_and_workshop_management.jwt.JwtUtil;
 import com.wecp.financial_seminar_and_workshop_management.service.UserService;
-<<<<<<< HEAD
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-=======
 
 import org.springframework.beans.factory.annotation.Autowired;
->>>>>>> 5442920660eae2787a3df7ebd32d28530e7e493b
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,21 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 
-<<<<<<< HEAD
-public class RegisterAndLoginController {
-
-
-    @PostMapping("/api/user/register")
-    public ResponseEntity<User> registerUser(@RequestBody User user) {
-        // register user
-    }
-
-    @PostMapping("/api/user/login")
-    public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest) {
-        // login user
-        // return JWT token in LoginResponse object
-        // if login fails, return 401 Unauthorized http status
-=======
 
 @RestController
 public class RegisterAndLoginController {
@@ -91,6 +71,5 @@ public class RegisterAndLoginController {
         String token = jwtUtil.generateToken(userDetails);
     
         return ResponseEntity.ok(new LoginResponse(token));
->>>>>>> 5442920660eae2787a3df7ebd32d28530e7e493b
     }
 }

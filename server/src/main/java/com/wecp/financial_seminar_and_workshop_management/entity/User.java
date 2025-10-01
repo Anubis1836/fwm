@@ -1,21 +1,5 @@
 package com.wecp.financial_seminar_and_workshop_management.entity;
 
-<<<<<<< HEAD
-
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-@Table(name = "users") // do not change table name
-public class User {
-    // implement user entity here
-=======
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -60,5 +44,4 @@ public class User {
 
     public List<Event> getEvents() { return events; }
     public void setEvents(List<Event> events) { this.events = events; }
->>>>>>> 5442920660eae2787a3df7ebd32d28530e7e493b
 }

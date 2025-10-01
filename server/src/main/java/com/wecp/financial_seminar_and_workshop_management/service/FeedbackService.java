@@ -12,10 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-<<<<<<< HEAD
-public class FeedbackService {
-    // implement service methods here
-=======
 @Service
 public class FeedbackService {
 
@@ -30,5 +26,4 @@ public class FeedbackService {
         feedback.setEvent(event);
         return feedbackRepository.save(feedback);
     }
->>>>>>> 5442920660eae2787a3df7ebd32d28530e7e493b
 }

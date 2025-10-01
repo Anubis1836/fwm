@@ -13,13 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-<<<<<<< HEAD
-public class ProfessionalController {
-
-    @GetMapping("/api/professional/events")
-    public ResponseEntity<List<Event>> viewAssignedEvents(@RequestParam Long userId) {
-        // view assigned events
-=======
 @RestController
 public class ProfessionalController {
 
@@ -29,22 +22,10 @@ public class ProfessionalController {
     @GetMapping("/api/professional/events")
     public ResponseEntity<List<Event>> viewAssignedEvents(@RequestParam Long userId) {
         return ResponseEntity.ok(eventService.getForProfessional(userId));
->>>>>>> 5442920660eae2787a3df7ebd32d28530e7e493b
     }
 
     @PutMapping("/api/professional/event/{id}/status")
     public ResponseEntity<Event> updateEventStatus(@PathVariable Long id, @RequestParam String status) {
-<<<<<<< HEAD
-        // update event status
-    }
-
-    @PostMapping("/api/professional/event/{eventId}/feedback")
-    public ResponseEntity<Feedback> provideFeedback(@PathVariable Long eventId, @RequestParam Long userId, @RequestBody Feedback feedback) {
-        // provide feedback
-    }
-}
-
-=======
         return ResponseEntity.ok(eventService.updateStatus(id, status));
     }
 
@@ -55,4 +36,3 @@ public class ProfessionalController {
         return ResponseEntity.ok(feedbackService.addFeedback(userId, eventId, feedback));
     }
 }
->>>>>>> 5442920660eae2787a3df7ebd32d28530e7e493b
