@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    alert("Hai Welcome");
     if(this.itemForm.invalid) {
       return;
     }
