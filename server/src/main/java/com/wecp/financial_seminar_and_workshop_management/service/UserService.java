@@ -3,10 +3,7 @@ package com.wecp.financial_seminar_and_workshop_management.service;
 import com.wecp.financial_seminar_and_workshop_management.entity.User;
 import com.wecp.financial_seminar_and_workshop_management.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-<<<<<<< HEAD
-=======
 import org.springframework.security.core.authority.AuthorityUtils;
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,12 +13,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
-
-public class UserService  {
-
-    // implement service methods here
-=======
 @Service
 public class UserService implements UserDetailsService {
 
@@ -56,5 +47,4 @@ public class UserService implements UserDetailsService {
                 u.getPassword(),
                 AuthorityUtils.createAuthorityList(u.getRole()));
     }
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
 }

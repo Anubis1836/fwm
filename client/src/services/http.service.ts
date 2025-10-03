@@ -3,22 +3,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment.development';
 import { AuthService } from './auth.service';
-<<<<<<< HEAD
-
-=======
  
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
-<<<<<<< HEAD
-  public serverName=environment.apiUrl;
- //todo: complete missing code..
-  
-  
-}
-=======
   public serverName = environment.apiUrl;
   constructor(private http: HttpClient, private authService: AuthService) { }
  
@@ -130,4 +119,3 @@ export class HttpService {
  
 }
  
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f

@@ -11,11 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 
-<<<<<<< HEAD
-public class ResourceService {
-
-    // implement service methods here
-=======
 @Service
 public class ResourceService {
 
@@ -27,5 +22,4 @@ public class ResourceService {
         resource.setEvent(e);
         return resourceRepository.save(resource);
     }
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
 }

@@ -9,9 +9,6 @@ import { HttpService } from '../../services/http.service';
   templateUrl: './assign-professional.component.html',
   styleUrls: ['./assign-professional.component.scss']
 })
-<<<<<<< HEAD
-export class AssignProfessionalComponent //doto: complete missing code..
-=======
 export class AssignProfessionalComponent implements OnInit {
   itemForm!: FormGroup;
   events: any[] = [];
@@ -55,4 +52,3 @@ export class AssignProfessionalComponent implements OnInit {
     });
   }
 }
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f

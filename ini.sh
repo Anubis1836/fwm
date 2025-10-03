@@ -43,8 +43,4 @@ else
 fi
 echo "------------------"
 echo "Linked to github established"
-<<<<<<< HEAD
 echo "You can now push/pull your code to remote."
-=======
-echo "You can now push/pull your code to remote."
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f

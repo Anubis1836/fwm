@@ -1,25 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import { AuthService } from '../../services/auth.service';
-import { DatePipe } from '@angular/common';
-
-=======
-import { HttpService } from '../../services/http.service';
-import { AuthService } from '../../services/auth.service';
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
 
 @Component({
   selector: 'app-view-events',
   templateUrl: './view-events.component.html',
-<<<<<<< HEAD
-  styleUrls: ['./view-events.component.scss'],
-  providers: [DatePipe]
-})
-export class ViewEventsComponent //doto: complete missing code..
-=======
   styleUrls: ['./view-events.component.scss']
 })
 export class ViewEventsComponent implements OnInit {
@@ -87,4 +72,3 @@ export class ViewEventsComponent implements OnInit {
     });
   }
 }
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f

@@ -3,10 +3,7 @@ package com.wecp.financial_seminar_and_workshop_management.dto;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
 public class LoginResponse {
 
     private Long userId;
@@ -19,19 +16,6 @@ public class LoginResponse {
 
     private String role;
 
-<<<<<<< HEAD
-    @JsonCreator
-    public LoginResponse(@JsonProperty("userId") Long userId,
-                         @JsonProperty("token") String token,
-                         @JsonProperty("username") String username,
-                         @JsonProperty("email") String email,
-                         @JsonProperty("role") String role) {
-        this.userId = userId;
-        this.token = token;
-        this.username = username;
-        this.email = email;
-        this.role = role;
-=======
     // @JsonCreator
     // public LoginResponse(@JsonProperty("userId") Long userId,
     //                      @JsonProperty("token") String token,
@@ -47,7 +31,6 @@ public class LoginResponse {
 
     public LoginResponse(String token) {
         this.token = token;
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
     }
 
     public String getToken() {
@@ -89,8 +72,4 @@ public class LoginResponse {
     public void setUserId(Long userId) {
         this.userId = userId;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f

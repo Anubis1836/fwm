@@ -13,10 +13,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 
-<<<<<<< HEAD
-public class EnrollmentService {
-    // implement service methods here
-=======
 @Service
 public class EnrollmentService {
     @Autowired private EnrollmentRepository enrollmentRepository;
@@ -31,5 +27,4 @@ public class EnrollmentService {
         en.setEvent(event);
         return enrollmentRepository.save(en);
     }
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
 }

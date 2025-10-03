@@ -12,12 +12,6 @@ import java.util.List;
 import java.util.Optional;
 
 
-<<<<<<< HEAD
-public class EventService {
-
-    // implement service methods here
-
-=======
 @Service
 public class EventService {
 
@@ -68,5 +62,4 @@ public class EventService {
         e.setStatus(status);
         return eventRepository.save(e);
     }
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
 }

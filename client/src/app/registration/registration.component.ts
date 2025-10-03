@@ -3,15 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 
-<<<<<<< HEAD
-
-@Component({
-  selector: 'app-registration',
-  templateUrl: './registration.component.html'
- 
-})
-export class RegistrationComponent {//doto: complete missing code..
-=======
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -43,4 +34,3 @@ export class RegistrationComponent implements OnInit {
     });
   }
 }
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f

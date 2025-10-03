@@ -1,18 +1,9 @@
-<<<<<<< HEAD
-import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { HttpService } from '../../services/http.service';
-=======
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { HttpService } from '../../services/http.service';
 import { DatePipe } from '@angular/common';
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
 
 @Component({
   selector: 'app-add-feedback',
@@ -20,11 +11,6 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./add-feedback.component.scss'],
   providers: [DatePipe]
 })
-<<<<<<< HEAD
-export class AddFeedbackComponent //doto: complete missing code..
-  
-}
-=======
 export class AddFeedbackComponent implements OnInit {
   /**
    * FormGroup representing the feedback form. Includes fields for eventId,
@@ -124,4 +110,3 @@ export class AddFeedbackComponent implements OnInit {
     });
   }
 }
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f

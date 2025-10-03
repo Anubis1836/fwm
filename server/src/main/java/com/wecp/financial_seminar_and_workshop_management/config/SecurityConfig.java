@@ -10,39 +10,13 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-<<<<<<< HEAD
-=======
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-<<<<<<< HEAD
-
-public class SecurityConfig{
-
-    // Implement security configuration here
-    // /api/user/register and /api/user/login should be permitted to all
-    // /api/institution/event should be permitted to INSTITUTION
-    // /api/institution/event/{id} should be permitted to INSTITUTION
-    // /api/institution/events should be permitted to INSTITUTION
-    // /api/institution/event/{eventId}/resource should be permitted to INSTITUTION
-    // /api/institution/event/professionals should be permitted to INSTITUTION
-    // /api/institution/event/{eventId}/professional should be permitted to INSTITUTION
-    // /api/professional/events should be permitted to PROFESSIONAL
-    // /api/professional/event/{id}/status should be permitted to PROFESSIONAL
-    // /api/professional/event/{eventId}/feedback should be permitted to PROFESSIONAL
-    // /api/participant/events should be permitted to PARTICIPANT
-    // /api/participant/event/{eventId}/enroll should be permitted to PARTICIPANT
-    // /api/participant/event/{id}/status should be permitted to PARTICIPANT
-    // /api/participant/event/{eventId}/feedback should be permitted to PARTICIPANT
-
-    // Note: Use hasAuthority method to check the role of the user
-    // for example, hasAuthority("INSTITUTION")
-=======
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -88,5 +62,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
 }

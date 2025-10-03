@@ -1,24 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-<<<<<<< HEAD
-import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { HttpService } from '../../services/http.service';
-import { DatePipe } from '@angular/common';
-=======
 import { HttpService } from '../../services/http.service';
 import { AuthService } from '../../services/auth.service';
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
 
 @Component({
   selector: 'app-update-event-status',
   templateUrl: './update-event-status.component.html',
-<<<<<<< HEAD
-  styleUrls: ['./update-event-status.component.scss'],
-  providers: [DatePipe]
-})
-export class UpdateEventStatusComponent //doto: complete missing code..
-=======
   styleUrls: ['./update-event-status.component.scss']
 })
 export class UpdateEventStatusComponent implements OnInit {
@@ -81,4 +68,3 @@ export class UpdateEventStatusComponent implements OnInit {
     });
   }
 }
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f

@@ -15,28 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-<<<<<<< HEAD
-public class InstitutionController {
-
-
-
-    // Create Event
-    @PostMapping("/api/institution/event")
-    public ResponseEntity<Event> createEvent(@RequestBody Event event) {
-        // create event
-    }
-
-    // Update Event
-    @PutMapping("/api/institution/event/{id}")
-    public ResponseEntity<Event> updateEvent(@PathVariable Long id, @RequestBody Event eventDetails) {
-        // update event
-    }
-
-    // Get Events
-    @GetMapping("/api/institution/events")
-    public ResponseEntity<List<Event>> getInstitutionsEvents(@RequestParam Long institutionId) {
-        // get events of institution
-=======
 
 @RestController
 public class InstitutionController {
@@ -58,33 +36,20 @@ public class InstitutionController {
     @GetMapping("/api/institution/events")
     public ResponseEntity<List<Event>> getEvents(@RequestParam Long institutionId) {
         return ResponseEntity.ok(eventService.getForInstitution(institutionId));
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
     }
 
     @PostMapping("/api/institution/event/{eventId}/resource")
     public ResponseEntity<Resource> addResourceToEvent(@PathVariable Long eventId, @RequestBody Resource resource) {
-<<<<<<< HEAD
-        // add resource to event
-=======
         return ResponseEntity.ok(resourceService.addToEvent(eventId, resource));
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
     }
 
     @GetMapping("/api/institution/event/professionals")
     public ResponseEntity<List<User>> getProfessionalsList() {
-<<<<<<< HEAD
-      // get professionals list
-=======
         return ResponseEntity.ok(userService.getProfessionals());
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
     }
 
     @PostMapping("/api/institution/event/{eventId}/professional")
     public ResponseEntity<?> assignProfessionalToEvent(@PathVariable Long eventId, @RequestParam Long userId) {
-<<<<<<< HEAD
-     // assign professional to event
-=======
         return ResponseEntity.ok(eventService.assignProfessional(eventId, userId));
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
     }
 }

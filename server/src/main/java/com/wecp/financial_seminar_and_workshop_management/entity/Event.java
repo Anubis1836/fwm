@@ -1,16 +1,5 @@
 package com.wecp.financial_seminar_and_workshop_management.entity;
 
-<<<<<<< HEAD
-import javax.persistence.*;
-
-
-import java.util.ArrayList;
-import java.util.List;
-
-
-public class Event {
-    // implement event
-=======
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -74,5 +63,4 @@ public class Event {
 
     public List<Feedback> getFeedback() { return feedback; }
     public void setFeedback(List<Feedback> feedback) { this.feedback = feedback; }
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
 }

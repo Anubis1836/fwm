@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-=======
 import { FormBuilder, FormGroup, UntypedFormArray, Validators } from '@angular/forms';
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
 import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import { AuthService } from '../../services/auth.service';
@@ -13,10 +9,6 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './add-resource.component.html',
   styleUrls: ['./add-resource.component.scss']
 })
-<<<<<<< HEAD
-export class AddResourceComponent //doto: complete missing code..
- 
-=======
 export class AddResourceComponent implements OnInit {
   itemForm!: FormGroup;
   events: any[] = [];
@@ -54,5 +46,4 @@ export class AddResourceComponent implements OnInit {
       error: () => (this.errorMessage = 'Failed to add resource')
     });
   }
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
 }

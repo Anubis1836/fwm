@@ -4,18 +4,11 @@ import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import { AuthService } from '../../services/auth.service';
 
-<<<<<<< HEAD
-
-=======
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
 @Component({
   selector: 'app-create-event',
   templateUrl: './create-event.component.html',
   styleUrls: ['./create-event.component.scss']
 })
-<<<<<<< HEAD
-export class CreateEventComponent //doto: complete missing code..
-=======
 export class CreateEventComponent implements OnInit {
   itemForm!: FormGroup;
   successMessage = '';
@@ -52,4 +45,3 @@ export class CreateEventComponent implements OnInit {
   }
 }
 
->>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
