@@ -10,12 +10,17 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+<<<<<<< HEAD
+=======
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
+>>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+<<<<<<< HEAD
 
 public class SecurityConfig{
 
@@ -37,4 +42,51 @@ public class SecurityConfig{
 
     // Note: Use hasAuthority method to check the role of the user
     // for example, hasAuthority("INSTITUTION")
+=======
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired 
+    private UserDetailsService userDetailsService;
+    @Autowired 
+    private PasswordEncoder passwordEncoder;
+    @Autowired 
+    private JwtRequestFilter jwtRequestFilter;
+
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService)
+            .passwordEncoder(passwordEncoder);
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.cors().and().csrf().disable()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and().authorizeRequests()
+                .antMatchers("/api/user/register", "/api/user/login").permitAll()
+
+                // INSTITUTION endpoints
+                .antMatchers("/api/institution/**").hasAuthority("INSTITUTION")
+
+                // PROFESSIONAL endpoints
+                .antMatchers("/api/professional/**").hasAuthority("PROFESSIONAL")
+
+                // PARTICIPANT endpoints
+                .antMatchers("/api/participant/**").hasAuthority("PARTICIPANT")
+
+                .anyRequest().authenticated();
+
+        http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+>>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
 }

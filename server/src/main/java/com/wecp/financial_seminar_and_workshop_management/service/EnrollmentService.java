@@ -13,6 +13,23 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 
+<<<<<<< HEAD
 public class EnrollmentService {
     // implement service methods here
+=======
+@Service
+public class EnrollmentService {
+    @Autowired private EnrollmentRepository enrollmentRepository;
+    @Autowired private UserRepository userRepository;
+    @Autowired private EventRepository eventRepository;
+
+    public Enrollment enroll(Long userId, Long eventId) {
+        User user = userRepository.findById(userId).orElseThrow();
+        Event event = eventRepository.findById(eventId).orElseThrow();
+        Enrollment en = new Enrollment();
+        en.setUser(user);
+        en.setEvent(event);
+        return enrollmentRepository.save(en);
+    }
+>>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
 }

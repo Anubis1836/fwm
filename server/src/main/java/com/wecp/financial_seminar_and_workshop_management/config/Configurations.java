@@ -18,10 +18,19 @@ public class Configurations {
 
     @Bean
     public WebMvcConfigurer corsConfigurer() {
+<<<<<<< HEAD
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "DELETE").allowedOrigins("*")
+=======
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+                        .allowedOrigins("*")
+>>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
                         .allowedHeaders("*");
             }
         };

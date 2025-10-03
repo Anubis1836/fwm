@@ -12,6 +12,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+<<<<<<< HEAD
 public class FeedbackService {
     // implement service methods here
+=======
+@Service
+public class FeedbackService {
+
+    @Autowired private FeedbackRepository feedbackRepository;
+    @Autowired private UserRepository userRepository;
+    @Autowired private EventRepository eventRepository;
+
+    public Feedback addFeedback(Long userId, Long eventId, Feedback feedback) {
+        User user = userRepository.findById(userId).orElseThrow();
+        Event event = eventRepository.findById(eventId).orElseThrow();
+        feedback.setUser(user);
+        feedback.setEvent(event);
+        return feedbackRepository.save(feedback);
+    }
+>>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
 }

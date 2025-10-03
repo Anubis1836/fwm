@@ -11,4 +11,31 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+<<<<<<< HEAD
 export class LoginComponent //doto: complete missing code..
+=======
+export class LoginComponent implements OnInit {
+  itemForm!:FormGroup;
+  errorMessage='';
+
+  constructor(private fb:FormBuilder, private httpService: HttpService, private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.itemForm = this.fb.group({
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]]
+    });
+  }
+
+  login() {
+    alert("Hai Welcome");
+    if(this.itemForm.invalid) {
+      return;
+    }
+    this.httpService.login(this.itemForm.value).subscribe({
+      next: (res) => this.authService.saveToken(res.token),
+      error: () => (this.errorMessage = 'Invalid username or password')
+    });
+  }
+}
+>>>>>>> ca5246d8c07a0e3e005f03199e1e1eba9d8d8e5f
