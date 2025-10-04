@@ -16,7 +16,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 
 
@@ -68,8 +67,12 @@ public class RegisterAndLoginController {
         }
     
         UserDetails userDetails = userService.loadUserByUsername(loginRequest.getUsername());
-        String token = jwtUtil.generateToken(userDetails);
-    
-        return ResponseEntity.ok(new LoginResponse(token));
+        User u = userService.getByUsername(loginRequest.getUsername());
+        String token = jwtUtil.generateToken(loginRequest.getUsername());
+
+        String role = u.getRole();
+        Long userId = u.getId();
+        System.out.println("User Roles: " + role);
+        return ResponseEntity.ok(new LoginResponse(token, role, userId));
     }
 }

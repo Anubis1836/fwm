@@ -23,6 +23,7 @@ public class UserService implements UserDetailsService {
 
     public User register(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole(user.getRole().toUpperCase());
         return userRepository.save(user);
     }
 
