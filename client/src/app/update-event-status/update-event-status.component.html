@@ -1,4 +1,4 @@
-<div class="status-container">
+<div class="status-container" *ngIf="!errorMessage || errorMessage !== 'You are not authorized to update events.'">
   <h2>Update Event Status</h2>
   <form [formGroup]="itemForm" (ngSubmit)="submit()">
     <div class="form-group">
@@ -13,7 +13,7 @@
     <div class="form-group">
       <label for="status">Status</label>
       <select id="status" formControlName="status">
-        <option [ngValue]="''">Select Status</option>
+        <option [ngValue]="null">Select Status</option>
         <option *ngFor="let s of statuses" [ngValue]="s">{{ s }}</option>
       </select>
     </div>

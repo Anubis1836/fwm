@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationComponent } from './registration/registration.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HttpService } from '../services/http.service';
-import { DashbaordComponent } from './dashbaord/dashbaord.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { AddResourceComponent } from './add-resource/add-resource.component';
 
@@ -18,13 +18,14 @@ import { ViewEventsComponent } from './view-events/view-events.component';
 import { AssignProfessionalComponent } from './assign-professional/assign-professional.component';
 import { UpdateEventStatusComponent } from './update-event-status/update-event-status.component';
 import { AddFeedbackComponent } from './add-feedback/add-feedback.component';
-
+import {HTTP_INTERCEPTORS} from '@angular/common/http'
+import { AuthInterceptor } from '../services/AuthInterceptor';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
       RegistrationComponent,
-      DashbaordComponent,    
+      DashboardComponent,    
       CreateEventComponent,
       AddResourceComponent,
 
@@ -42,7 +43,7 @@ import { AddFeedbackComponent } from './add-feedback/add-feedback.component';
     ReactiveFormsModule,
     HttpClientModule 
   ],
-  providers: [HttpService,HttpClientModule ],
+  providers: [HttpService,HttpClientModule ,{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

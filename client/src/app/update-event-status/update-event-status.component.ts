@@ -9,54 +9,43 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./update-event-status.component.scss']
 })
 export class UpdateEventStatusComponent implements OnInit {
-  /**
-   * Reactive form for updating event status. Contains eventId and status.
-   */
   itemForm!: FormGroup;
-
-  /**
-   * List of events to choose from.
-   */
   events: any[] = [];
-
-  /**
-   * Allowed status values for an event. Adjust these as necessary to match
-   * your backend.
-   */
   statuses: string[] = ['Not Started', 'Ongoing', 'Completed', 'Cancelled'];
-
-  /** Success and error messages for UI feedback */
   successMessage = '';
   errorMessage = '';
 
-  constructor(private fb: FormBuilder, private httpService: HttpService, private authService: AuthService) {}
+  constructor(private fb: FormBuilder, private httpService: HttpService, public authService: AuthService) {}
 
   ngOnInit(): void {
-    // Initialize form controls with validators
+    if (!['PROFESSIONAL', 'INSTITUTION'].includes(this.authService.getRole || '')) {
+      this.errorMessage = 'You are not authorized to update events.';
+      return;
+    }
+
     this.itemForm = this.fb.group({
       eventId: [null, Validators.required],
-      status: ['', Validators.required]
+      status: [null, Validators.required]
     });
 
-    // Load events (for simplicity we fetch by institution ID; change as needed)
-    this.httpService.getEventByInstitutionId(1).subscribe({
+    const userId = this.authService.getUserId(); // Get logged-in user's ID
+    if (!userId) return;
+
+    this.httpService.getEventByProfessional().subscribe({
       next: (res: any) => (this.events = res || []),
       error: () => (this.errorMessage = 'Failed to load events')
     });
   }
 
-  /**
-   * Submit the updated status to the backend. If successful, display a success
-   * message; otherwise display an error message.
-   */
   submit(): void {
     if (this.itemForm.invalid) {
       this.errorMessage = 'Please select an event and status.';
       this.successMessage = '';
       return;
     }
+
     const { eventId, status } = this.itemForm.value;
-    this.httpService.UpdateEventStatus(eventId, status).subscribe({
+    this.httpService.updateEventStatus(eventId, status).subscribe({
       next: () => {
         this.successMessage = 'Event status updated successfully.';
         this.errorMessage = '';

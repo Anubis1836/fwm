@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, UntypedFormArray, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpService } from '../../services/http.service';
 import { AuthService } from '../../services/auth.service';
 
@@ -15,7 +14,11 @@ export class AddResourceComponent implements OnInit {
   successMessage: string = '';
   errorMessage: string = '';
 
-  constructor(private fb: FormBuilder, private httpService: HttpService) { }
+  constructor(
+    private fb: FormBuilder,
+    private httpService: HttpService,
+    public authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.itemForm = this.fb.group({
@@ -24,16 +27,19 @@ export class AddResourceComponent implements OnInit {
       description: [undefined, Validators.required],
       availabilityStatus: [null, Validators.required]
     });
-    this.itemForm.patchValue({
-      type: undefined,
-      description: undefined
-    })
+
     this.loadEvents();
   }
 
   loadEvents() {
-    this.httpService.getEventByInstitutionId(1).subscribe({
-      next: (res) => (this.events = res),
+    const instId = Number(this.authService.getUserId());
+    if (!instId) {
+      this.errorMessage = 'Cannot load events: Institution not logged in';
+      return;
+    }
+
+    this.httpService.getEventByInstitutionId(instId).subscribe({
+      next: (res: any) => (this.events = res),
       error: () => (this.errorMessage = 'Failed to load events')
     });
   }
@@ -47,3 +53,8 @@ export class AddResourceComponent implements OnInit {
     });
   }
 }
+
+
+
+
+

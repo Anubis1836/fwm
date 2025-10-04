@@ -22,25 +22,25 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired 
+    @Autowired
     private UserDetailsService userDetailsService;
-    @Autowired 
+    @Autowired
     private PasswordEncoder passwordEncoder;
-    @Autowired 
+    @Autowired
     private JwtRequestFilter jwtRequestFilter;
-
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService)
-            .passwordEncoder(passwordEncoder);
+                .passwordEncoder(passwordEncoder);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and().authorizeRequests()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and().authorizeRequests()
+               // .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers("/api/user/register", "/api/user/login").permitAll()
 
                 // INSTITUTION endpoints
@@ -51,6 +51,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 // PARTICIPANT endpoints
                 .antMatchers("/api/participant/**").hasAuthority("PARTICIPANT")
+                // .antMatchers("/api/participant/events/**").hasRole("PARTICIPANT")
+                // .antMatchers("/api/participant/event/**/enroll").hasRole("PARTICIPANT")
+                // .antMatchers("/api/institution/events/**").hasRole("INSTITUTION")
 
                 .anyRequest().authenticated();
 

@@ -14,7 +14,7 @@ export class RegistrationComponent implements OnInit {
   successMessage = '';
   errorMessage = '';
 
-  constructor(private fb: FormBuilder, private httpService: HttpService) { }
+  constructor(private fb: FormBuilder, private httpService: HttpService, private router: Router) {}
 
   ngOnInit(): void {
     this.itemForm = this.fb.group({
@@ -28,8 +28,17 @@ export class RegistrationComponent implements OnInit {
   register() {
     if (this.itemForm.invalid) return;
 
-    this.httpService.registerUser(this.itemForm.value).subscribe({
-      next: () => (this.successMessage = 'Registration successful'),
+    // Ensure role matches backend format
+    const formValue = {
+      ...this.itemForm.value,
+      role: this.itemForm.value.role.toUpperCase()
+    };
+
+    this.httpService.registerUser(formValue).subscribe({
+      next: () => {
+        this.successMessage = 'Registration successful. Redirecting to login...';
+        setTimeout(() => this.router.navigate(['/login']), 1500);
+      },
       error: () => (this.errorMessage = 'Failed to register user')
     });
   }

@@ -17,15 +17,17 @@
       <label for="role">Role</label>
       <select id="role" formControlName="role">
         <option [ngValue]="null">Select Role</option>
-        <option value="participant">Participant</option>
-        <option value="professional">Professional</option>
-        <option value="institution">Institution</option>
+        <option value="PARTICIPANT">Participant</option>
+        <option value="PROFESSIONAL">Professional</option>
+        <option value="INSTITUTION">Institution</option>
       </select>
     </div>
     <button type="submit" class="primary-btn">Register</button>
   </form>
+
   <p class="success-message" *ngIf="successMessage">{{ successMessage }}</p>
   <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+
   <p class="login-link">
     Already have an account? <a routerLink="/login">Login</a>
   </p>

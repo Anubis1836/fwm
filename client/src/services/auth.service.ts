@@ -45,4 +45,9 @@ export class AuthService {
   
     localStorage.setItem('userId',userid);
   }
+  
+  getUserId(): string | null {
+    return localStorage.getItem('userId');
+  }
+  
 }

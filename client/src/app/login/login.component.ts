@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   itemForm!:FormGroup;
   errorMessage='';
 
-  constructor(private fb:FormBuilder, private httpService: HttpService, private authService: AuthService) {}
+  constructor(private fb:FormBuilder, private httpService: HttpService, private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.itemForm = this.fb.group({
@@ -25,13 +25,14 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    alert("Hai Welcome");
     if(this.itemForm.invalid) {
       return;
     }
     this.httpService.login(this.itemForm.value).subscribe({
-      next: (res) => this.authService.saveToken(res.token),
-      error: () => (this.errorMessage = 'Invalid username or password')
+      next: (res) => {this.authService.saveToken(res.token);
+        console.log(res.token);
+                      this.router.navigateByUrl("/dashboard")},
+      error: () => (this.errorMessage = 'Invalid username or password'),
     });
   }
 }

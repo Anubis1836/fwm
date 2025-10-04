@@ -14,7 +14,7 @@ export class CreateEventComponent implements OnInit {
   successMessage = '';
   errorMessage = '';
 
-  constructor(private fb: FormBuilder, private httpService: HttpService) { }
+  constructor(private fb: FormBuilder, private httpService: HttpService,public authService:AuthService) { }
 
   ngOnInit(): void {
     this.itemForm = this.fb.group({
@@ -25,23 +25,27 @@ export class CreateEventComponent implements OnInit {
       description: [undefined, [Validators.required]],
       institutionId: [null]
     });
-
+  
+    // Automatically set institutionId from logged-in user
+    const userId = this.authService.getUserId(); // make sure AuthService has this
     this.itemForm.patchValue({
-      title:undefined,
-      schedule:undefined,
-      location:undefined,
-      description:undefined,
-      institutionId:null
-    })
+      institutionId: userId
+    });
   }
   
   submit() {
     if (this.itemForm.invalid) return;
-
+  
     this.httpService.createEvent(this.itemForm.value).subscribe({
-      next: () => (this.successMessage = 'Event created successfully'),
-      error: () => (this.errorMessage = 'Failed to create event')
+      next: () => {
+        this.successMessage = 'Event created successfully';
+        this.errorMessage = '';
+        this.itemForm.reset({ institutionId: this.authService.getUserId() });
+      },
+      error: (err) => {
+        this.errorMessage = err?.error?.message || 'Failed to create event';
+        this.successMessage = '';
+      }
     });
-  }
 }
-
+}
